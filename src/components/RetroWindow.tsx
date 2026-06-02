@@ -26,7 +26,7 @@ export default function RetroWindow({
   onTitlebarPointerUp?: PointerEventHandler<HTMLElement>;
 }) {
   return (
-    <section className={`retro-window overflow-hidden ${className ?? ""}`}>
+    <section className={`retro-window flex min-h-0 flex-col overflow-hidden ${className ?? ""}`}>
       <header
         className="retro-titlebar flex items-center justify-between px-3 py-2 select-none"
         onPointerDown={onTitlebarPointerDown}
@@ -68,7 +68,9 @@ export default function RetroWindow({
           </button>
         </div>
       </header>
-      <div className={`p-4 ${contentClassName ?? ""}`}>{children}</div>
+      <div className={`min-h-0 flex-1 overflow-auto p-4 ${contentClassName ?? ""}`}>
+        {children}
+      </div>
     </section>
   );
 }

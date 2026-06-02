@@ -7,12 +7,11 @@ import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
 import FloatingWindow from "@/components/FloatingWindow";
 import { portfolio } from "@/lib/portfolio";
-import TransparentPng from "@/components/TransparentPng";
 
 function ArcLogo() {
   return (
     <div className="pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center px-4">
-      <div className="relative w-[min(640px,80vw)]">
+      <div className="relative w-[clamp(380px,55vw,640px)]">
         <svg
           viewBox="0 0 640 260"
           className="mx-auto h-auto w-full"
@@ -29,12 +28,14 @@ function ArcLogo() {
             </textPath>
           </text>
         </svg>
-        <div className="mx-auto -mt-10 w-[min(320px,46vw)]">
-          <TransparentPng
+        <div className="mx-auto -mt-10 w-[clamp(200px,30vw,320px)]">
+          <Image
             src="/cats/guitar-cat.png"
             alt="Guitar cat"
+            width={700}
+            height={900}
             className="h-auto w-full object-contain"
-            threshold={26}
+            priority
           />
         </div>
       </div>
@@ -56,14 +57,16 @@ export default function Desktop() {
 
   return (
     <div className="relative flex-1 pb-[52px]">
-      <Sidebar
-        activeId={active ?? "portfolio"}
-        onSelect={(id) => {
-          setActive(id);
-          setIsMaximized(false);
-          setMenuOpen(false);
-        }}
-      />
+      {active ? null : (
+        <Sidebar
+          activeId={active ?? "portfolio"}
+          onSelect={(id) => {
+            setActive(id);
+            setIsMaximized(false);
+            setMenuOpen(false);
+          }}
+        />
+      )}
 
       <ArcLogo />
 
@@ -76,7 +79,7 @@ export default function Desktop() {
       </div>
 
       <main className="mx-auto flex max-w-[1200px] px-4 pt-8">
-        <div className="ml-[116px] w-full">
+        <div className={active ? "ml-0 w-full" : "ml-[116px] w-full"}>
           {active === "portfolio" && (
             <FloatingWindow
               id="portfolio"

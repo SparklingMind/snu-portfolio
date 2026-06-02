@@ -81,6 +81,6 @@ body {
 
 .taskbar-sway {
   display: inline-block;
-  animation: taskbar-sway 10s ease-in-out infinite;
+  animation: taskbar-sway 6.7s ease-in-out infinite;
   will-change: transform;
 }
