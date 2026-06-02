@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Sidebar, { type SidebarItemId } from "@/components/Sidebar";
 import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
-import RetroWindow from "@/components/RetroWindow";
+import FloatingWindow from "@/components/FloatingWindow";
 import { portfolio } from "@/lib/portfolio";
 
 function ArcLogo() {
@@ -83,16 +83,12 @@ export default function Desktop() {
       <main className="mx-auto flex max-w-[1200px] px-4 pt-8">
         <div className="ml-[116px] w-full">
           {active === "portfolio" && (
-            <RetroWindow
+            <FloatingWindow
+              id="portfolio"
               title="Portfolio"
-              className={
-                isMaximized
-                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
-                  : "max-w-[820px]"
-              }
-              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              isMaximized={isMaximized}
               onMinimize={() => setActive(null)}
-              onMaximize={() => setIsMaximized((v) => !v)}
+              onToggleMaximize={() => setIsMaximized((v) => !v)}
               onClose={() => setActive(null)}
             >
               <div className="grid gap-4 md:grid-cols-[1fr_260px]">
@@ -179,20 +175,16 @@ export default function Desktop() {
                   </section>
                 </aside>
               </div>
-            </RetroWindow>
+            </FloatingWindow>
           )}
 
           {active === "services" && (
-            <RetroWindow
+            <FloatingWindow
+              id="services"
               title="Services"
-              className={
-                isMaximized
-                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
-                  : "max-w-[920px]"
-              }
-              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              isMaximized={isMaximized}
               onMinimize={() => setActive(null)}
-              onMaximize={() => setIsMaximized((v) => !v)}
+              onToggleMaximize={() => setIsMaximized((v) => !v)}
               onClose={() => setActive(null)}
             >
               <div className="grid gap-4 md:grid-cols-[1fr_1fr]">
@@ -239,20 +231,16 @@ export default function Desktop() {
                   </div>
                 </section>
               </div>
-            </RetroWindow>
+            </FloatingWindow>
           )}
 
           {active === "contact" && (
-            <RetroWindow
+            <FloatingWindow
+              id="contact"
               title="Contact"
-              className={
-                isMaximized
-                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
-                  : "max-w-[720px]"
-              }
-              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              isMaximized={isMaximized}
               onMinimize={() => setActive(null)}
-              onMaximize={() => setIsMaximized((v) => !v)}
+              onToggleMaximize={() => setIsMaximized((v) => !v)}
               onClose={() => setActive(null)}
             >
               <div className="space-y-3 text-[20px] text-black/80">
@@ -276,7 +264,7 @@ export default function Desktop() {
                   </div>
                 </div>
               </div>
-            </RetroWindow>
+            </FloatingWindow>
           )}
 
           <div className="mt-4 text-[18px] tracking-wide text-black/50">

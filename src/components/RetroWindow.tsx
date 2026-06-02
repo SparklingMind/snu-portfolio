@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { PointerEventHandler, ReactNode } from "react";
 
 export default function RetroWindow({
   title,
@@ -9,6 +9,9 @@ export default function RetroWindow({
   onMinimize,
   onMaximize,
   onClose,
+  onTitlebarPointerDown,
+  onTitlebarPointerMove,
+  onTitlebarPointerUp,
 }: {
   title: string;
   children: ReactNode;
@@ -18,10 +21,18 @@ export default function RetroWindow({
   onMinimize?: () => void;
   onMaximize?: () => void;
   onClose?: () => void;
+  onTitlebarPointerDown?: PointerEventHandler<HTMLElement>;
+  onTitlebarPointerMove?: PointerEventHandler<HTMLElement>;
+  onTitlebarPointerUp?: PointerEventHandler<HTMLElement>;
 }) {
   return (
     <section className={`retro-window overflow-hidden ${className ?? ""}`}>
-      <header className="retro-titlebar flex items-center justify-between px-3 py-2">
+      <header
+        className="retro-titlebar flex items-center justify-between px-3 py-2 select-none"
+        onPointerDown={onTitlebarPointerDown}
+        onPointerMove={onTitlebarPointerMove}
+        onPointerUp={onTitlebarPointerUp}
+      >
         <div className="flex items-center gap-2">
           <span className="inline-block h-3 w-3 rounded-[2px] bg-black/20" />
           <h2 className="text-[18px] leading-none tracking-wide">{title}</h2>
