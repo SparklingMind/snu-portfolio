@@ -66,3 +66,21 @@ body {
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
 }
+
+@keyframes taskbar-sway {
+  0% {
+    transform: translateX(-14%);
+  }
+  50% {
+    transform: translateX(14%);
+  }
+  100% {
+    transform: translateX(-14%);
+  }
+}
+
+.taskbar-sway {
+  display: inline-block;
+  animation: taskbar-sway 10s ease-in-out infinite;
+  will-change: transform;
+}

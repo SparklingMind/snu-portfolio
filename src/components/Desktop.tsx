@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Sidebar, { type SidebarItemId } from "@/components/Sidebar";
 import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
@@ -9,46 +10,33 @@ import { portfolio } from "@/lib/portfolio";
 
 function ArcLogo() {
   return (
-    <div className="pointer-events-none absolute right-[260px] top-[160px] hidden select-none md:block">
-      <div className="relative h-[260px] w-[420px]">
+    <div className="pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center px-4">
+      <div className="relative w-[min(640px,80vw)]">
         <svg
-          viewBox="0 0 420 260"
-          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 640 260"
+          className="mx-auto h-auto w-full"
           aria-hidden="true"
         >
           <path
             id="arcPath"
-            d="M60,165 C135,50 285,50 360,165"
+            d="M80,190 C200,50 440,50 560,190"
             fill="none"
           />
-          <text fill="rgba(0,0,0,0.55)" fontSize="24" letterSpacing="6">
+          <text fill="rgba(0,0,0,0.55)" fontSize="28" letterSpacing="6">
             <textPath href="#arcPath" startOffset="50%" textAnchor="middle">
-              CATS WITH JOBS
+              NETWORKS · IDENTITY · AFFECT
             </textPath>
           </text>
         </svg>
-        <div className="absolute left-1/2 top-[120px] -translate-x-1/2">
-          <svg
-            width="90"
-            height="90"
-            viewBox="0 0 90 90"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M18 68c2-18 10-30 27-32 17-2 25 14 27 32 1 11-7 16-27 16S17 79 18 68Z"
-              fill="#111"
-            />
-            <path
-              d="M28 40l-8-14 10 6 5 10-7-2Z"
-              fill="#111"
-            />
-            <path
-              d="M62 40l8-14-10 6-5 10 7-2Z"
-              fill="#111"
-            />
-            <path d="M58 62c10 2 12-10 10-18" stroke="#111" strokeWidth="5" />
-          </svg>
+        <div className="mx-auto -mt-10 w-[min(320px,46vw)]">
+          <Image
+            src="/cats/guitar-cat.png"
+            alt="Guitar cat"
+            width={600}
+            height={900}
+            className="h-auto w-full object-contain"
+            priority
+          />
         </div>
       </div>
     </div>
@@ -78,7 +66,15 @@ export default function Desktop() {
         }}
       />
 
-      {active ? null : <ArcLogo />}
+      <ArcLogo />
+
+      <div className="pointer-events-none fixed left-1/2 top-2 z-20 -translate-x-1/2">
+        <div className="retro-window px-3 py-2">
+          <div className="text-[18px] tracking-wide text-black/75">
+            Active: {windowTitle}
+          </div>
+        </div>
+      </div>
 
       <main className="mx-auto flex max-w-[1200px] px-4 pt-8">
         <div className="ml-[116px] w-full">
@@ -137,6 +133,15 @@ export default function Desktop() {
                 </div>
 
                 <aside className="space-y-4">
+                  <section className="retro-window p-2">
+                    <Image
+                      src="/cats/crown-cat.png"
+                      alt="Crown cat"
+                      width={500}
+                      height={500}
+                      className="h-auto w-full object-contain"
+                    />
+                  </section>
                   <section className="retro-window p-3">
                     <div className="text-[22px] tracking-wide">Contact</div>
                     <div className="mt-2 grid gap-1 text-[20px] text-black/80">
@@ -213,6 +218,15 @@ export default function Desktop() {
 
                 <section className="space-y-2">
                   <div className="text-[22px] tracking-wide">Educations</div>
+                  <section className="retro-window p-2">
+                    <Image
+                      src="/cats/world-cats.png"
+                      alt="Cats around the world"
+                      width={700}
+                      height={900}
+                      className="h-auto w-full object-cover"
+                    />
+                  </section>
                   <div className="space-y-3">
                     {portfolio.educations.map((e) => (
                       <article key={`${e.school}-${e.period}`} className="space-y-1">
@@ -243,8 +257,18 @@ export default function Desktop() {
               onToggleMaximize={() => setIsMaximized((v) => !v)}
               onClose={() => setActive(null)}
             >
-              <div className="space-y-3 text-[20px] text-black/80">
-                <div className="text-[26px] tracking-wide">{portfolio.name}</div>
+              <div className="grid gap-4 md:grid-cols-[260px_1fr]">
+                <section className="retro-window p-2">
+                  <Image
+                    src="/cats/cool-cat.png"
+                    alt="Cool cat"
+                    width={700}
+                    height={700}
+                    className="h-auto w-full object-contain"
+                  />
+                </section>
+                <div className="space-y-3 text-[20px] text-black/80">
+                  <div className="text-[26px] tracking-wide">{portfolio.name}</div>
                 <div className="grid gap-1">
                   <div>
                     <span className="text-black/55">Phone</span>{" "}
@@ -264,12 +288,9 @@ export default function Desktop() {
                   </div>
                 </div>
               </div>
+              </div>
             </FloatingWindow>
           )}
-
-          <div className="mt-4 text-[18px] tracking-wide text-black/50">
-            Active: {windowTitle}
-          </div>
         </div>
       </main>
 

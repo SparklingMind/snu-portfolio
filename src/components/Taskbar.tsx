@@ -43,10 +43,9 @@ export default function Taskbar({
             MENU
           </button>
           <div className="flex-1 px-3 text-center text-[18px] tracking-wide text-black/70">
-            ***turning data into insight***
+            <span className="taskbar-sway">***turning data into insight***</span>
           </div>
           <div className="flex items-center gap-2 border-l border-black/20 pl-3 text-[18px] tracking-wide">
-            <span className="inline-block h-4 w-4 rounded-full border-2 border-black/35" />
             <span>{timeText}</span>
           </div>
         </div>
