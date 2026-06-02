@@ -7,6 +7,7 @@ import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
 import FloatingWindow from "@/components/FloatingWindow";
 import { portfolio } from "@/lib/portfolio";
+import ChromaKeyImage from "@/components/ChromaKeyImage";
 
 function ArcLogo() {
   return (
@@ -29,13 +30,12 @@ function ArcLogo() {
           </text>
         </svg>
         <div className="mx-auto -mt-10 w-[clamp(200px,30vw,320px)]">
-          <Image
+          <ChromaKeyImage
             src="/cats/guitar-cat.png"
             alt="Guitar cat"
-            width={700}
-            height={900}
             className="h-auto w-full object-contain"
-            priority
+            lightnessThreshold={228}
+            chromaThreshold={24}
           />
         </div>
       </div>
