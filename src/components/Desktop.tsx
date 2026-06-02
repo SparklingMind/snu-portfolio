@@ -56,10 +56,12 @@ function ArcLogo() {
 }
 
 export default function Desktop() {
-  const [active, setActive] = useState<SidebarItemId>("portfolio");
+  const [active, setActive] = useState<SidebarItemId | null>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const windowTitle = useMemo(() => {
+    if (!active) return "Desktop";
     if (active === "portfolio") return "Portfolio";
     if (active === "services") return "Services";
     return "Contact";
@@ -68,19 +70,31 @@ export default function Desktop() {
   return (
     <div className="relative flex-1 pb-[52px]">
       <Sidebar
-        activeId={active}
+        activeId={active ?? "portfolio"}
         onSelect={(id) => {
           setActive(id);
+          setIsMaximized(false);
           setMenuOpen(false);
         }}
       />
 
-      <ArcLogo />
+      {active ? null : <ArcLogo />}
 
       <main className="mx-auto flex max-w-[1200px] px-4 pt-8">
         <div className="ml-[116px] w-full">
           {active === "portfolio" && (
-            <RetroWindow title="Portfolio" className="max-w-[820px]">
+            <RetroWindow
+              title="Portfolio"
+              className={
+                isMaximized
+                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
+                  : "max-w-[820px]"
+              }
+              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              onMinimize={() => setActive(null)}
+              onMaximize={() => setIsMaximized((v) => !v)}
+              onClose={() => setActive(null)}
+            >
               <div className="grid gap-4 md:grid-cols-[1fr_260px]">
                 <div className="space-y-4">
                   <div>
@@ -169,7 +183,18 @@ export default function Desktop() {
           )}
 
           {active === "services" && (
-            <RetroWindow title="Services" className="max-w-[920px]">
+            <RetroWindow
+              title="Services"
+              className={
+                isMaximized
+                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
+                  : "max-w-[920px]"
+              }
+              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              onMinimize={() => setActive(null)}
+              onMaximize={() => setIsMaximized((v) => !v)}
+              onClose={() => setActive(null)}
+            >
               <div className="grid gap-4 md:grid-cols-[1fr_1fr]">
                 <section className="space-y-2">
                   <div className="text-[22px] tracking-wide">Work Experience</div>
@@ -218,7 +243,18 @@ export default function Desktop() {
           )}
 
           {active === "contact" && (
-            <RetroWindow title="Contact" className="max-w-[720px]">
+            <RetroWindow
+              title="Contact"
+              className={
+                isMaximized
+                  ? "fixed left-[132px] right-4 top-8 bottom-[68px] z-30 max-w-none"
+                  : "max-w-[720px]"
+              }
+              contentClassName={isMaximized ? "h-full overflow-auto" : undefined}
+              onMinimize={() => setActive(null)}
+              onMaximize={() => setIsMaximized((v) => !v)}
+              onClose={() => setActive(null)}
+            >
               <div className="space-y-3 text-[20px] text-black/80">
                 <div className="text-[26px] tracking-wide">{portfolio.name}</div>
                 <div className="grid gap-1">
@@ -253,6 +289,7 @@ export default function Desktop() {
         open={menuOpen}
         onSelect={(id) => {
           setActive(id);
+          setIsMaximized(false);
           setMenuOpen(false);
         }}
       />

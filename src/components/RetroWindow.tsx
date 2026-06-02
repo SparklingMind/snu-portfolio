@@ -5,11 +5,19 @@ export default function RetroWindow({
   children,
   className,
   rightSlot,
+  contentClassName,
+  onMinimize,
+  onMaximize,
+  onClose,
 }: {
   title: string;
   children: ReactNode;
   className?: string;
   rightSlot?: ReactNode;
+  contentClassName?: string;
+  onMinimize?: () => void;
+  onMaximize?: () => void;
+  onClose?: () => void;
 }) {
   return (
     <section className={`retro-window overflow-hidden ${className ?? ""}`}>
@@ -24,6 +32,7 @@ export default function RetroWindow({
             type="button"
             className="retro-titlebar-button"
             aria-label="Minimize"
+            onClick={onMinimize}
           >
             <span className="block h-[2px] w-2 bg-black/70" />
           </button>
@@ -31,6 +40,7 @@ export default function RetroWindow({
             type="button"
             className="retro-titlebar-button"
             aria-label="Maximize"
+            onClick={onMaximize}
           >
             <span className="block h-2 w-2 border-2 border-black/70" />
           </button>
@@ -38,6 +48,7 @@ export default function RetroWindow({
             type="button"
             className="retro-titlebar-button"
             aria-label="Close"
+            onClick={onClose}
           >
             <span className="relative block h-2 w-2">
               <span className="absolute left-1/2 top-1/2 block h-[2px] w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-black/70" />
@@ -46,7 +57,7 @@ export default function RetroWindow({
           </button>
         </div>
       </header>
-      <div className="p-4">{children}</div>
+      <div className={`p-4 ${contentClassName ?? ""}`}>{children}</div>
     </section>
   );
 }

@@ -69,12 +69,6 @@ export const portfolio: PortfolioData = {
       major: "미디어학",
       period: "2026/03 ~ 2028/02",
     },
-    {
-      degree: "Bachelor of Arts",
-      school: "중앙대학교",
-      major: "사회회학",
-      period: "2018/03 ~ 2024/02",
-    },
   ],
   languages: [
     { name: "한국어", level: "★★★★★" },

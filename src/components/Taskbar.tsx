@@ -32,7 +32,7 @@ export default function Taskbar({
   return (
     <footer className="fixed bottom-0 left-0 right-0 z-50">
       <div className="h-[52px] border-t-2 border-black/15 bg-[var(--taskbar)] shadow-[0_-1px_0_var(--taskbar-border)]">
-        <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4">
+        <div className="flex h-full w-full items-center px-4">
           <button
             type="button"
             className="retro-button h-9 px-4 text-[18px] tracking-wide"
@@ -42,14 +42,12 @@ export default function Taskbar({
           >
             MENU
           </button>
-          <div className="flex items-center gap-3">
-            <div className="text-[18px] tracking-wide text-black/70">
-              ***cats be workin hard too***
-            </div>
-            <div className="flex items-center gap-2 border-l border-black/20 pl-3 text-[18px] tracking-wide">
-              <span className="inline-block h-4 w-4 rounded-full border-2 border-black/35" />
-              <span>{timeText}</span>
-            </div>
+          <div className="flex-1 px-3 text-center text-[18px] tracking-wide text-black/70">
+            ***turning data into insight***
+          </div>
+          <div className="flex items-center gap-2 border-l border-black/20 pl-3 text-[18px] tracking-wide">
+            <span className="inline-block h-4 w-4 rounded-full border-2 border-black/35" />
+            <span>{timeText}</span>
           </div>
         </div>
       </div>
