@@ -7,7 +7,6 @@ import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
 import FloatingWindow from "@/components/FloatingWindow";
 import { portfolio } from "@/lib/portfolio";
-import ChromaKeyImage from "@/components/ChromaKeyImage";
 
 function ArcLogo() {
   return (
@@ -30,12 +29,13 @@ function ArcLogo() {
           </text>
         </svg>
         <div className="mx-auto -mt-10 w-[clamp(200px,30vw,320px)]">
-          <ChromaKeyImage
-            src="/cats/guitar-cat.png"
-            alt="Guitar cat"
+          <Image
+            src="/cats/crown-cat.png"
+            alt="Crown cat"
+            width={700}
+            height={700}
             className="h-auto w-full object-contain"
-            lightnessThreshold={228}
-            chromaThreshold={24}
+            priority
           />
         </div>
       </div>
@@ -57,16 +57,14 @@ export default function Desktop() {
 
   return (
     <div className="relative flex-1 pb-[52px]">
-      {active ? null : (
-        <Sidebar
-          activeId={active ?? "portfolio"}
-          onSelect={(id) => {
-            setActive(id);
-            setIsMaximized(false);
-            setMenuOpen(false);
-          }}
-        />
-      )}
+      <Sidebar
+        activeId={active ?? "portfolio"}
+        onSelect={(id) => {
+          setActive(id);
+          setIsMaximized(false);
+          setMenuOpen(false);
+        }}
+      />
 
       <ArcLogo />
 

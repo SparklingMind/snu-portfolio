@@ -124,9 +124,9 @@ export default function FloatingWindow({
 
   const containerClassName = useMemo(() => {
     if (isMaximized) {
-      return "fixed left-[132px] right-4 top-8 bottom-[68px] z-30";
+      return "fixed left-4 right-4 top-8 bottom-[68px] z-50";
     }
-    return "fixed z-30";
+    return "fixed z-50";
   }, [isMaximized]);
 
   const onTitlebarPointerDown = (e: React.PointerEvent<HTMLElement>) => {

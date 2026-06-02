@@ -42,7 +42,7 @@ export default function Sidebar({
   onSelect: (id: SidebarItemId) => void;
 }) {
   return (
-    <aside className="fixed left-4 top-8 z-40 w-[clamp(76px,10vw,92px)]">
+    <aside className="fixed left-4 top-8 z-20 w-[clamp(76px,10vw,92px)]">
       <nav className="flex flex-col gap-[clamp(14px,2.6vw,20px)]">
         <button
           type="button"
