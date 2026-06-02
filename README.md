@@ -20,7 +20,10 @@ npm run build
 
 ## Vercel 배포
 
-이 저장소 루트에 `docs/`가 있고, Next.js 앱은 `snu-portfolio/` 폴더에 있습니다.
+현재 Git 저장소(Next.js 앱)는 `snu-portfolio/` 폴더입니다.
 
-- Vercel 프로젝트 생성 시 **Root Directory** 를 `snu-portfolio` 로 지정하세요.
+- Vercel에서 Import 시 **Root Directory**: `snu-portfolio`
+- Framework Preset: Next.js (자동 인식)
+- Build Command: `npm run build` (기본값)
+- Output Directory: `.next` (기본값)
 
