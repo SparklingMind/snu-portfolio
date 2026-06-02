@@ -7,6 +7,7 @@ import StartMenu from "@/components/StartMenu";
 import Taskbar from "@/components/Taskbar";
 import FloatingWindow from "@/components/FloatingWindow";
 import { portfolio } from "@/lib/portfolio";
+import TransparentPng from "@/components/TransparentPng";
 
 function ArcLogo() {
   return (
@@ -29,13 +30,11 @@ function ArcLogo() {
           </text>
         </svg>
         <div className="mx-auto -mt-10 w-[min(320px,46vw)]">
-          <Image
+          <TransparentPng
             src="/cats/guitar-cat.png"
             alt="Guitar cat"
-            width={600}
-            height={900}
             className="h-auto w-full object-contain"
-            priority
+            threshold={26}
           />
         </div>
       </div>
@@ -68,7 +67,7 @@ export default function Desktop() {
 
       <ArcLogo />
 
-      <div className="pointer-events-none fixed left-1/2 top-2 z-20 -translate-x-1/2">
+      <div className="pointer-events-none fixed right-4 top-2 z-20">
         <div className="retro-window px-3 py-2">
           <div className="text-[18px] tracking-wide text-black/75">
             Active: {windowTitle}
